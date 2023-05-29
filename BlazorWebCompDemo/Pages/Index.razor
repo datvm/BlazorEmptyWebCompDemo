@@ -1,0 +1,26 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<my-component>
+    <!-- This is fine -->
+    <div class="important">Foo</div>
+</my-component>
+
+<!-- These are not: -->
+<my-component>
+    <span>@(foo)</span>
+    <div class="important">Foo</div>
+</my-component>
+
+<my-component data-foo="@(foo)">
+    <div class="important">Foo</div>
+</my-component>
+
+<my-component>
+    <div data-foo="@(foo)" class="important">Foo</div>
+</my-component>
+
+@code {
+    int foo = 42;
+}
